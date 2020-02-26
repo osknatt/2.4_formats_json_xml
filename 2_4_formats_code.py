@@ -11,7 +11,11 @@ count_json = Counter()
 
 for i in json_news['rss']['channel']['items']:
     list_news = i['description'].split()
-    list_news = [x for x in list_news if len(x) > 6]
+    list_news = [x.lower() for x in list_news if len(x) > 6]
+    # list_n = []
+    # for x in list_news:
+    #     if len(x) > 6:
+    #         list_n.append(x)
     count_json += Counter(list_news)
 result = count_json.most_common(10)
 print('10 наиболее часто встречаемых слов в статьях (json):')
