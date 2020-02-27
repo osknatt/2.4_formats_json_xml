@@ -21,7 +21,7 @@ result = count_json.most_common(10)
 print('10 наиболее часто встречаемых слов в статьях (json):')
 for r in result:
     print(f'Слово "{r[0]}" - {r[1]} раз(а)')
-
+                            
 
 
 tree = ET.parse('newsafr.xml')
@@ -33,7 +33,7 @@ count_xml = Counter()
 
 for i in items:
     list_news = i.find('description').text.split()
-    list_news = [x for x in list_news if len(x) > 6]
+    list_news = [x.lower() for x in list_news if len(x) > 6]
     count_xml += Counter(list_news)
 result = count_xml.most_common(10)
 print('10 наиболее часто встречаемых слов в статьях (xml):')
